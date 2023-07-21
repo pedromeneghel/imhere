@@ -5,9 +5,13 @@ import { useState } from 'react';
 
 export function Home() {
   const [participants, setParticipants] = useState<string[]>([]);
-  const [participantName, setParticipantName] = useState<string>('');
+  const [participantName, setParticipantName] = useState('');
 
   function handleParticipantAdd() {
+    if(participantName.length <= 2) {
+      return Alert.alert('Campo não preenchido', 'Informe o nome do participante')
+    }
+
     if(participants.includes(participantName)){
       return Alert.alert('Participante existente', `Já existe um participante ${participantName} na lista de presenças`);
     }
